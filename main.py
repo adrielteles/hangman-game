@@ -1,8 +1,7 @@
-from modules.player import Player
-from modules.forca import Forca
+from modules.game import Game
 
 
-
+game = Game()
 while True:
     try:
             options_menu = ("1.SOLO", "2.VS", "3.Score Board", "4.Sair","\n")
@@ -12,17 +11,18 @@ while True:
             print("--------------------------------------","\n")
             
             option = int(input('Selecionar Opção: '))
-            if option in range(1, len(options_menu)+1):
+            if option in range(1, len(options_menu)):
                 if option == 1:
-                    forca_1 = Forca("SOLO")
-                    forca_1.desenha_forca()
+                    game.play(1)
                 elif option == 2:
-                    print("modo versus")
+                    game.play(2)
                 elif option == 3:
                     print("Score Board")
                 elif option == 4:
                     print("Sai mesmo perdedor")
                     break
+            else:
+                print("opção invalida")
     except ValueError:
         print("Opção invalida")
     except EOFError:

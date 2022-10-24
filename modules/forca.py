@@ -3,35 +3,17 @@ class Forca:
 
     def __init__(self) -> None:
 
-            self.__palavra = ""
+            self.__palavra = []
             self.__dicas = []
-            self.__modo = ""
             self.__tema = ""
 
     #Methods
-
-    def escolhe_modo(self, modo:int):
-        
-        if modo == 1:
-            self.__modo = "SOLO"
-        if modo == 2:
-            self.__modo = "VS"
-
-
-    def ver_modo(self):
-        return self.__modo
 
     def escolhe_tema(self):
         temas = ["carros"]
         self.__tema = temas[random.randrange(0,len(temas))]
 
         return self.__tema
-
-
-    def desenha_cabecalo(self):
-        
-        espacamento = "*"*40
-        print(f'{espacamento}\n JOGO DA FORCA MODO {self.__modo}\n{espacamento}')
 
 
     def escolhe_palavra(self):
@@ -62,7 +44,7 @@ class Forca:
 
             if item[0] == lista_palavra[random_choice]:
 
-                self.__palavra = item[0]
+                self.__palavra.append(item[0])
                 self.__dicas.append(item[1])
                 self.__dicas.append(item[2])
                 self.__dicas.append(item[3])
@@ -70,7 +52,7 @@ class Forca:
                 self.__dicas.append(item[5])
     
     def visualisa_palavra(self):
-        return self.__palavra
+        return self.__palavra[-1]
 
     def visualisa_dica(self, num_dica:int):
         
@@ -88,15 +70,14 @@ class Forca:
         else:
             print("Erro não existe essa dica!")
 
-    def display_palavra(self):
+    def display_palavra(self, palavra):
         display_palavra = ""
-        for letra in self.__palavra:
+        for letra in palavra:
             if letra == " ":
                 display_palavra += "-"
             else:
                 display_palavra += "_"
-        return display_palavra
-
+        return [letra for letra in display_palavra]
 
     def pede_chute(self):
         while True:
@@ -105,25 +86,15 @@ class Forca:
 
                 if len(chute) <= 1:
                     return chute
-            except:
-                ("Chute invalido")
+                else:
+                    print("Chute invalido")
+            except EOFError:
+                break
 
+    def marca_letra_correta(self, chute, letras_acertadas, palavra_secreta):
 
-
-
-forcateste = Forca()
-forcateste.escolhe_tema()
-forcateste.escolhe_palavra()
-
-print(forcateste.visualisa_palavra())
-print(forcateste.visualisa_dica(1))
-print(forcateste.visualisa_dica(2))
-print(forcateste.visualisa_dica(3))
-print(forcateste.visualisa_dica(4))
-print(forcateste.visualisa_dica(5))
-
-
-
-print(forcateste.display_palavra())
-
-
+        index = 0
+        for letra in palavra_secreta:
+            if (chute == letra):
+                letras_acertadas[index] = letra
+            index += 1
