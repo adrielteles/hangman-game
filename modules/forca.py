@@ -1,20 +1,14 @@
 import random 
+from pathlib import Path
 class Forca:
 
     def __init__(self) -> None:
 
             self.__palavra = []
             self.__dicas = []
-            self.__tema = ""
+            self.__temas = []
 
     #Methods
-
-    def escolhe_tema(self):
-        temas = ["carros"]
-        self.__tema = temas[random.randrange(0,len(temas))]
-
-        return self.__tema
-
 
     def escolhe_palavra(self):
 
@@ -22,7 +16,10 @@ class Forca:
         lista_palavras_refeitas = []
         lista_palavra = []
 
-        arquivo = open(f'./database/palavras/{self.__tema}.txt', 'r')
+        caminho = Path(f'./database/palavras/')
+        for arquivos in caminho.iterdir():
+            self.__temas.append(arquivos.name)
+        arquivo = open(f'{caminho}/{self.__temas[random.randrange(0,len(self.__temas))]}', 'r')
 
         while True:
             linha = arquivo.readline()
@@ -98,3 +95,10 @@ class Forca:
             if (chute == letra):
                 letras_acertadas[index] = letra
             index += 1
+
+
+
+
+
+forcateste = Forca()
+forcateste.escolhe_palavra()
