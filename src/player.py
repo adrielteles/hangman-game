@@ -228,19 +228,34 @@ class Player:
 
     def calculaPatente(self):
         if self.__level < 10:
-            self.__patente = '🦆 Duck'
+            self.__patente = 'Duck'
         elif self.__level < 20:
-            self.__patente = '🐨 Koala'
+            self.__patente = 'Koala'
         elif self.__level < 30:
-            self.__patente = '🦨 Skunk'
+            self.__patente = 'Skunk'
         elif self.__level < 40:
-            self.__patente = '🐮 Cow'
+            self.__patente = 'Cow'
         elif self.__level < 50:
-            self.__patente = '🐼 Panda'
+            self.__patente = 'Panda'
         elif self.__level < 60:
-            self.__patente = '🦄 Unicorn'
+            self.__patente = 'Unicorn'
         else:
-            self.__patente = '🐲 Dragon'
+            self.__patente = 'Dragon'
+    def patenteIcon(self):
+        if self.__patente == 'Duck':
+            return '🦆'
+        elif self.__patente == 'Koala':
+            return '🐨'
+        elif self.__patente == 'Skunk':
+            return '🦨'
+        elif self.__patente == 'Cow':
+            return '🐮'
+        elif self.__patente == 'Panda':
+            return '🐼'
+        elif self.__patente == 'Unicorn':
+            return '🐨'
+        elif self.__patente == 'Dragon':
+            return '🐲'
 
     def procuraPlayer(self,nome:str):
         for arquivo in self.__pathdb.iterdir():
@@ -256,13 +271,12 @@ class Player:
                 self.__exp = int(itens_player[3])
                 self.__level = int(itens_player[4])
                 self.__patente = itens_player[5]
-            else:
-                self.__nome = nome
+        self.__nome = nome
 
     def savePlayer(self):
         self.calculaExp()
         self.calculaLevel()
         self.calculaPatente()
         with open(f'{self.__pathdb}/{self.__nome}.txt', 'w') as f:
-            f.write("{},{},{},{},{},{}".format({self.__nome},{self.__palavras_acertadas},{self.__letras_acertadas},{self.__exp},{self.__level},{self.__patente}))
+            f.writelines(str(f'{self.__nome},{self.__palavras_acertadas},{self.__letras_acertadas},{self.__exp},{self.__level},{self.__patente}'))
             f.close()
