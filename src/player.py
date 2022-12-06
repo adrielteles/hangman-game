@@ -260,7 +260,7 @@ class Player:
     def procuraPlayer(self,nome:str):
         for arquivo in self.__pathdb.iterdir():
             if arquivo.name[:-4] == nome:
-                arquivo = open(f'{self.__pathdb}/{nome}.txt', 'r')
+                arquivo = open(f'{self.__pathdb}/{nome}.txt', 'r',encoding='utf-8')
                 player = arquivo.readline()
                 arquivo.close()
 
@@ -277,6 +277,6 @@ class Player:
         self.calculaExp()
         self.calculaLevel()
         self.calculaPatente()
-        with open(f'{self.__pathdb}/{self.__nome}.txt', 'w') as f:
+        with open(f'{self.__pathdb}/{self.__nome}.txt', 'w',encoding='utf-8') as f:
             f.writelines(str(f'{self.__nome},{self.__palavras_acertadas},{self.__letras_acertadas},{self.__exp},{self.__level},{self.__patente}'))
             f.close()

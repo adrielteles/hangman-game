@@ -1,1 +1,1 @@
-Adriel,2007,447,10929,60,Dragon
+Adriel,3,23,61,0,Duck

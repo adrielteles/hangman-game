@@ -5,7 +5,6 @@ class Forca:
     def __init__(self) -> None:
         
         self.__palavra_secreta = ''
-        self.__dicas_palavra_secreta = []
         self.__letras_acertadas = ''
         self.__letras_usadas = ''
         self.__tema = ''
@@ -23,25 +22,17 @@ class Forca:
 
     def setRandomPalavraSecreta(self):
 
-        arquivo = open(f'{self.__pathdb}/{self.__tema}.txt', 'r')
+        arquivo = open(f'{self.__pathdb}/{self.__tema}.txt', 'r',encoding='utf-8')
 
         while True:
             line = arquivo.readline()
             if (line != ""):
-                self.__listaPalavras.append(line)
+                self.__listaPalavras.append(line.replace("\n", "").upper())
                 continue
             break
         arquivo.close()
-        items_palavra = self.__listaPalavras[random.randrange(0, len(self.__listaPalavras))]
-        item_forca = items_palavra.split(',')
-
-        self.__palavra_secreta = item_forca[0]
-        self.__dicas_palavra_secreta.append(item_forca[1])
-        self.__dicas_palavra_secreta.append(item_forca[2])
-        self.__dicas_palavra_secreta.append(item_forca[3])
+        self.__palavra_secreta = self.__listaPalavras[random.randrange(0, len(self.__listaPalavras))]
     
-    def getDica(self, number:int):
-        return self.__dicas_palavra_secreta[number]
 
     def getTemas(self):
         return self.__temas
