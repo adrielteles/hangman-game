@@ -43,11 +43,11 @@ while True:
                     print(f'Player: {player_solo.getNome()} Palavras: {player_solo.getPalavrasAcertadas()} Letras: {player_solo.getLetrasAcertadas()} Exp: {player_solo.getExp()} Lv {player_solo.getLevel()} {player_solo.patenteIcon()} {player_solo.getPatente()}')
                     forca_solo.desenhaforca(forca_solo.formaPalavra(),forca_solo.getErros())
                     print(f'Palavras já usadas: {forca_solo.getLetrasUsadas()}')
-                    chute = input("Chute: ")
+                    chute= input("Chute: ")
                     if len(chute)> 1:
                         print("digite apenas uma letra.")
                         continue
-                    forca_solo.setLetra(chute)
+                    forca_solo.setLetra(chute.upper())
 
                     if forca_solo.winner(forca_solo.getErros()):
                         forca_solo.desenhaforca(forca_solo.formaPalavra(),forca_solo.getErros())
@@ -58,7 +58,7 @@ while True:
                         player_solo.palavraAcertadas(1)
                         player_solo.letrasAcertadas(countLetras)
                         player_solo.savePlayer()
-                        print(f'Player: {player_solo.getNome()} Palavras: {player_solo.getPalavrasAcertadas()} Letras: {player_solo.getLetrasAcertadas()} Exp: {player_solo.getExp()} Lv {player_solo.getLevel()} {player_solo.patenteIcon()} {player_solo.getPatente()}')
+                        print(f'🏆 Player: {player_solo.getNome()} Palavras: {player_solo.getPalavrasAcertadas()} Letras: {player_solo.getLetrasAcertadas()} Exp: {player_solo.getExp()} Lv {player_solo.getLevel()} {player_solo.patenteIcon()} {player_solo.getPatente()}')
                         break
                     elif forca_solo.winner(forca_solo.getErros()) == False:
                         forca_solo.desenhaforca(forca_solo.formaPalavra(),forca_solo.getErros())
@@ -124,7 +124,7 @@ while True:
                     if len(chute_p1)> 1:
                         print("digite apenas uma letra.")
                         continue
-                    forca_p1.setLetra(chute_p1)
+                    forca_p1.setLetra(chute_p1.upper())
 
                     if forca_p1.winner(forca_p1.getErros()):
                         forca_p1.desenhaforca(forca_p1.formaPalavra(),forca_p1.getErros())
@@ -157,7 +157,7 @@ while True:
                         
                         break
                     forca_p1.desenhaforca(forca_p1.formaPalavra(),forca_p1.getErros())
-                    time.sleep(5)
+                    time.sleep(3)
 
 
                     print('MODO', options_menu[1])
@@ -168,7 +168,7 @@ while True:
                     if len(chute_p2)> 1:
                         print("digite apenas uma letra.")
                         continue
-                    forca_p2.setLetra(chute_p2)
+                    forca_p2.setLetra(chute_p2.upper())
 
                     if forca_p2.winner(forca_p2.getErros()):
                         forca_p2.desenhaforca(forca_p2.formaPalavra(),forca_p2.getErros())
