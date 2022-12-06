@@ -86,11 +86,8 @@ class Forca:
     def winner(self,tentativas:int):
         if self.formaPalavra().replace('-',' ') == self.__palavra_secreta and tentativas<8:
             return True
-
-    def loser(self, tentativas:int):
-        if tentativas >= 8:
-            return True
-
+        elif tentativas >= 8:
+            return False
 
     def desenhaforca(self, palavra:str, tentativa:int):
         if tentativa == 0:
