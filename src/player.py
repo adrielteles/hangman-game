@@ -12,30 +12,35 @@ class Player:
         self.__patente = ''
         self.__pathdb = Path(f'./database/players')
 
+    @property
     def getNome(self):
         return self.__nome
 
     def setNome(self, nome:str):
         self.__nome = nome
 
+    @property
     def getPalavrasAcertadas(self):
         return self.__palavras_acertadas
 
     def palavraAcertadas(self, numeroPalavras:int):
         self.__palavras_acertadas += numeroPalavras
 
+    @property
     def getLetrasAcertadas(self):
         return self.__letras_acertadas
 
     def letrasAcertadas(self, numeroLetras:int):
         self.__letras_acertadas += numeroLetras
 
+    @property
     def getExp(self):
         return self.__exp
 
     def calculaExp(self):
         self.__exp = (self.__palavras_acertadas * 5) + (self.__letras_acertadas *2)
 
+    @property
     def getLevel(self):
         return self.__level
 
@@ -223,6 +228,8 @@ class Player:
         else:
             self.__level = 60
 
+
+    @property
     def getPatente(self):
         return self.__patente
 
@@ -241,6 +248,7 @@ class Player:
             self.__patente = 'Unicorn'
         else:
             self.__patente = 'Dragon'
+            
     def patenteIcon(self):
         if self.__patente == 'Duck':
             return '🦆'

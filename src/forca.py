@@ -13,10 +13,11 @@ class Forca:
         self.__pathdb = Path(f'./database/palavras')
         self.__erros = 0
 
-
+    @property
     def getPalavraSecreta(self):
         return self.__palavra_secreta
 
+    @property
     def getLetrasAcertadas(self):
         return self.__letras_acertadas
 
@@ -33,15 +34,15 @@ class Forca:
         arquivo.close()
         self.__palavra_secreta = self.__listaPalavras[random.randrange(0, len(self.__listaPalavras))]
     
-
+    @property
     def getTemas(self):
         return self.__temas
-
+    
     def setTemas(self):
 
         for arquivos in self.__pathdb.iterdir():
             self.__temas.append(arquivos.name[:-4])
-    
+    @property
     def getTema(self):
         return self.__tema
 
@@ -57,9 +58,11 @@ class Forca:
         elif letra not in self.__palavra_secreta:
             self.__erros += 1
 
+    @property
     def getLetrasUsadas(self):
         return self.__letras_usadas
 
+    @property
     def getErros(self):
         return self.__erros
 
