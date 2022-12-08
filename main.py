@@ -19,8 +19,8 @@ while True:
                 forca_solo.setTemas()
                 player_solo = Player()
                 print('MODO', options_menu[0])
-                nome_player = input("Nome Jogador: ")
-                player_solo.procuraPlayer(nome_player)
+                name_player = input("Nome Jogador: ")
+                player_solo.procuraPlayer(name_player)
                 player_solo.calculaExp()
                 player_solo.calculaLevel()
                 player_solo.calculaPatente()
@@ -40,7 +40,7 @@ while True:
 
                 while True:
                     print('MODO', options_menu[0])
-                    print(f'Player: {player_solo.getNome} Palavras: {player_solo.getPalavrasAcertadas} Letras: {player_solo.getLetrasAcertadas} Exp: {player_solo.getExp} Lv {player_solo.getLevel} {player_solo.patenteIcon()} {player_solo.getPatente}')
+                    print(f'Player: {player_solo.name} Palavras: {player_solo.palavras_acertadas} Letras: {player_solo.letras_acertadas} Exp: {player_solo.exp} Lv {player_solo.level} {player_solo.patenteIcon()} {player_solo.patente}')
                     forca_solo.desenhaforca(forca_solo.formaPalavra(),forca_solo.getErros)
                     print(f'Palavras já usadas: {forca_solo.getLetrasUsadas}')
                     chute= input("Chute: ")
@@ -55,10 +55,10 @@ while True:
                         print(f'Palavra Acertada: {forca_solo.getPalavraSecreta} +5xp')
                         countLetras = len(forca_solo.getPalavraSecreta.replace(' ',''))
                         print(f'Letras acertadas: {countLetras} +{countLetras*2}xp')
-                        player_solo.palavraAcertadas(1)
-                        player_solo.letrasAcertadas(countLetras)
+                        player_solo.palavras_acertadas = 1
+                        player_solo.letras_acertadas = countLetras
                         player_solo.savePlayer()
-                        print(f'🏆 Player: {player_solo.getNome} Palavras: {player_solo.getPalavrasAcertadas} Letras: {player_solo.getLetrasAcertadas} Exp: {player_solo.getExp} Lv {player_solo.getLevel} {player_solo.patenteIcon()} {player_solo.getPatente}')
+                        print(f'🏆 Player: {player_solo.name} Palavras: {player_solo.palavras_acertadas} Letras: {player_solo.letras_acertadas} Exp: {player_solo.exp} Lv {player_solo.level} {player_solo.patenteIcon()} {player_solo.patente}')
                         break
                     elif forca_solo.winner(forca_solo.getErros) == False:
                         forca_solo.desenhaforca(forca_solo.formaPalavra(),forca_solo.getErros)
@@ -117,7 +117,7 @@ while True:
 
                 while True:
                     print('MODO', options_menu[1])
-                    print(f'Player: {player_1.getNome} Palavras: {player_1.getPalavrasAcertadas} Letras: {player_1.getLetrasAcertadas} Exp: {player_1.getExp} Lv {player_1.getLevel} {player_1.patenteIcon()} {player_1.getPatente}')
+                    print(f'Player: {player_1.name} Palavras: {player_1.palavras_acertadas} Letras: {player_1.letras_acertadas} Exp: {player_1.exp} Lv {player_1.level} {player_1.patenteIcon()} {player_1.patente}')
                     forca_p1.desenhaforca(forca_p1.formaPalavra(),forca_p1.getErros)
                     print(f'Palavras já usadas: {forca_p1.getLetrasUsadas}')
                     chute_p1 = input("Chute: ")
@@ -128,32 +128,32 @@ while True:
 
                     if forca_p1.winner(forca_p1.getErros):
                         forca_p1.desenhaforca(forca_p1.formaPalavra(),forca_p1.getErros)
-                        print(f'{player_1.getNome} Ganhou!! Parabéns!')
+                        print(f'{player_1.name} Ganhou!! Parabéns!')
                         print(f'Palavra Acertada: {forca_p1.getPalavraSecreta} +5xp')
                         countLetras_p1 = len(forca_p1.getPalavraSecreta.replace(' ',''))
                         print(f'Letras acertadas: {countLetras_p1} +{countLetras_p1*2}xp')
-                        player_1.palavraAcertadas(1)
-                        player_1.letrasAcertadas(countLetras_p1)
+                        player_1.palavras_acertadas = 1
+                        player_1.letras_acertadas = countLetras_p1
                         player_1.savePlayer()
-                        print(f'1º🏆 Player: {player_1.getNome} Palavras: {player_1.getPalavrasAcertadas} Letras: {player_1.getLetrasAcertadas} Exp: {player_1.getExp} Lv {player_1.getLevel} {player_1.patenteIcon()} {player_1.getPatente}')
-                        print(f'2º😿 Player: {player_2.getNome} Palavras: {player_2.getPalavrasAcertadas} Letras: {player_2.getLetrasAcertadas} Exp: {player_2.getExp} Lv {player_2.getLevel} {player_2.patenteIcon()} {player_2.getPatente}')
+                        print(f'1º🏆 Player: {player_1.name} Palavras: {player_1.palavras_acertadas} Letras: {player_1.letras_acertadas} Exp: {player_1.exp} Lv {player_1.level} {player_1.patenteIcon()} {player_1.patente}')
+                        print(f'2º😿 Player: {player_2.name} Palavras: {player_2.palavras_acertadas} Letras: {player_2.letras_acertadas} Exp: {player_2.exp} Lv {player_2.level} {player_2.patenteIcon()} {player_2.patente}')
                         break
                     elif forca_p1.winner(forca_p1.getErros) == False:
                         forca_p1.desenhaforca(forca_p1.formaPalavra(),forca_p1.getErros)
-                        print(f'{player_1.getNome} Perdeu!!')
+                        print(f'{player_1.name} Perdeu!!')
                         print(f'A palavra era {forca_p1.getPalavraSecreta}')
                         print()
                         print('-'*100)
                         forca_p2.desenhaforca(forca_p2.formaPalavra(),forca_p2.getErros)
-                        print(f'{player_2.getNome} Ganhou!! Parabéns!')
+                        print(f'{player_2.name} Ganhou!! Parabéns!')
                         print(f'Palavra Acertada: {forca_p2.getPalavraSecreta} +5xp')
                         countLetras_p2 = len(forca_p2.getPalavraSecreta.replace(' ',''))
                         print(f'Letras acertadas: {countLetras_p2} +{countLetras_p2*2}xp')
-                        player_2.palavraAcertadas(1)
-                        player_2.letrasAcertadas(countLetras_p2)
+                        player_2.palavras_acertadas = 1
+                        player_2.letras_acertadas = countLetras_p2
                         player_2.savePlayer()
-                        print(f'1º🏆 Player: {player_2.getNome} Palavras: {player_2.getPalavrasAcertadas} Letras: {player_2.getLetrasAcertadas} Exp: {player_2.getExp} Lv {player_2.getLevel} {player_2.patenteIcon()} {player_2.getPatente}')
-                        print(f'2º😿 Player: {player_1.getNome} Palavras: {player_1.getPalavrasAcertadas} Letras: {player_1.getLetrasAcertadas} Exp: {player_1.getExp} Lv {player_1.getLevel} {player_1.patenteIcon()} {player_1.getPatente}')
+                        print(f'1º🏆 Player: {player_2.name} Palavras: {player_2.palavras_acertadas} Letras: {player_2.letras_acertadas} Exp: {player_2.exp} Lv {player_2.level} {player_2.patenteIcon()} {player_2.patente}')
+                        print(f'2º😿 Player: {player_1.name} Palavras: {player_1.palavras_acertadas} Letras: {player_1.letras_acertadas} Exp: {player_1.exp} Lv {player_1.level} {player_1.patenteIcon()} {player_1.patente}')
                         
                         break
                     forca_p1.desenhaforca(forca_p1.formaPalavra(),forca_p1.getErros)
@@ -161,7 +161,7 @@ while True:
 
 
                     print('MODO', options_menu[1])
-                    print(f'Player: {player_2.getNome} Palavras: {player_2.getPalavrasAcertadas} Letras: {player_2.getLetrasAcertadas} Exp: {player_2.getExp} Lv {player_2.getLevel} {player_2.patenteIcon()} {player_2.getPatente}')
+                    print(f'Player: {player_2.name} Palavras: {player_2.palavras_acertadas} Letras: {player_2.letras_acertadas} Exp: {player_2.exp} Lv {player_2.level} {player_2.patenteIcon()} {player_2.patente}')
                     forca_p2.desenhaforca(forca_p2.formaPalavra(),forca_p2.getErros)
                     print(f'Palavras já usadas: {forca_p2.getLetrasUsadas}')
                     chute_p2 = input("Chute: ")
@@ -172,28 +172,28 @@ while True:
 
                     if forca_p2.winner(forca_p2.getErros):
                         forca_p2.desenhaforca(forca_p2.formaPalavra(),forca_p2.getErros)
-                        print(f'{player_2.getNome} Ganhou!! Parabéns!')
+                        print(f'{player_2.name} Ganhou!! Parabéns!')
                         print(f'Palavra Acertada: {forca_p2.getPalavraSecreta} +5xp')
                         countLetras_p2 = len(forca_p2.getPalavraSecreta.replace(' ',''))
                         print(f'Letras acertadas: {countLetras_p2} +{countLetras_p2*2}xp')
-                        player_2.palavraAcertadas(1)
-                        player_2.letrasAcertadas(countLetras_p2)
+                        player_2.palavras_acertadas = 1
+                        player_2.letras_acertadas = countLetras_p2
                         player_2.savePlayer()
-                        print(f'1º🏆 Player: {player_2.getNome} Palavras: {player_2.getPalavrasAcertadas} Letras: {player_2.getLetrasAcertadas} Exp: {player_2.getExp} Lv {player_2.getLevel} {player_2.patenteIcon()} {player_2.getPatente}')
-                        print(f'2º😿 Player: {player_1.getNome} Palavras: {player_1.getPalavrasAcertadas} Letras: {player_1.getLetrasAcertadas} Exp: {player_1.getExp} Lv {player_1.getLevel} {player_1.patenteIcon()} {player_1.getPatente}')
+                        print(f'1º🏆 Player: {player_2.name} Palavras: {player_2.palavras_acertadas} Letras: {player_2.letras_acertadas} Exp: {player_2.exp} Lv {player_2.level} {player_2.patenteIcon()} {player_2.patente}')
+                        print(f'2º😿 Player: {player_1.name} Palavras: {player_1.palavras_acertadas} Letras: {player_1.letras_acertadas} Exp: {player_1.exp} Lv {player_1.level} {player_1.patenteIcon()} {player_1.patente}')
                         break
                     elif forca_p2.winner(forca_p2.getErros) == False:
 
                         forca_p1.desenhaforca(forca_p1.formaPalavra(),forca_p1.getErros)
-                        print(f'{player_1.getNome} Ganhou!! Parabéns!')
+                        print(f'{player_1.name} Ganhou!! Parabéns!')
                         print(f'Palavra Acertada: {forca_p1.getPalavraSecreta} +5xp')
                         countLetras_p1 = len(forca_p2.getPalavraSecreta.replace(' ',''))
                         print(f'Letras acertadas: {countLetras_p1} +{countLetras_p1*2}xp')
-                        forca_p1.palavraAcertadas(1)
-                        forca_p1.letrasAcertadas(countLetras_p1)
+                        forca_p1.palavras_acertadas = 1
+                        forca_p1.letras_acertadas = countLetras_p1
                         forca_p1.savePlayer()
-                        print(f'1º🏆 Player: {player_1.getNome} Palavras: {player_1.getPalavrasAcertadas} Letras: {player_1.getLetrasAcertadas} Exp: {player_1.getExp} Lv {player_1.getLevel} {player_1.patenteIcon()} {player_1.getPatente}')
-                        print(f'2º😿 Player: {player_2.getNome} Palavras: {player_2.getPalavrasAcertadas} Letras: {player_2.getLetrasAcertadas} Exp: {player_2.getExp} Lv {player_2.getLevel} {player_2.patenteIcon()} {player_2.getPatente}')
+                        print(f'1º🏆 Player: {player_1.name} Palavras: {player_1.palavras_acertadas} Letras: {player_1.letras_acertadas} Exp: {player_1.exp} Lv {player_1.level} {player_1.patenteIcon()} {player_1.patente}')
+                        print(f'2º😿 Player: {player_2.name} Palavras: {player_2.palavras_acertadas} Letras: {player_2.letras_acertadas} Exp: {player_2.exp} Lv {player_2.level} {player_2.patenteIcon()} {player_2.patente}')
                         
                         break
                     forca_p2.desenhaforca(forca_p2.formaPalavra(),forca_p2.getErros)

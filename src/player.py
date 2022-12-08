@@ -4,7 +4,7 @@ class Player:
 
     def __init__(self) -> None:
         
-        self.__nome= ''
+        self.__name= ''
         self.__palavras_acertadas = 0
         self.__letras_acertadas = 0
         self.__exp = 0
@@ -13,36 +13,43 @@ class Player:
         self.__pathdb = Path(f'./database/players')
 
     @property
-    def getNome(self):
-        return self.__nome
+    def name(self):
+        return self.__name
 
-    def setNome(self, nome:str):
-        self.__nome = nome
+    @name.setter
+    def name(self, name:str):
+        self.__name = name
 
     @property
-    def getPalavrasAcertadas(self):
+    def palavras_acertadas(self):
         return self.__palavras_acertadas
 
-    def palavraAcertadas(self, numeroPalavras:int):
+    @palavras_acertadas.setter
+    def palavras_acertadas(self, numeroPalavras:int):
         self.__palavras_acertadas += numeroPalavras
 
     @property
-    def getLetrasAcertadas(self):
+    def letras_acertadas(self):
         return self.__letras_acertadas
 
-    def letrasAcertadas(self, numeroLetras:int):
+    @letras_acertadas.setter
+    def letras_acertadas(self, numeroLetras:int):
         self.__letras_acertadas += numeroLetras
 
     @property
-    def getExp(self):
+    def exp(self):
         return self.__exp
 
     def calculaExp(self):
         self.__exp = (self.__palavras_acertadas * 5) + (self.__letras_acertadas *2)
 
     @property
-    def getLevel(self):
+    def level(self):
         return self.__level
+
+    @property
+    def patente(self):
+        return self.__patente
 
     def calculaLevel(self):
         
@@ -227,12 +234,7 @@ class Player:
             self.__level = 59
         else:
             self.__level = 60
-
-
-    @property
-    def getPatente(self):
-        return self.__patente
-
+            
     def calculaPatente(self):
         if self.__level < 10:
             self.__patente = 'Duck'
@@ -265,26 +267,26 @@ class Player:
         elif self.__patente == 'Dragon':
             return '🐲'
 
-    def procuraPlayer(self,nome:str):
+    def procuraPlayer(self,name:str):
         for arquivo in self.__pathdb.iterdir():
-            if arquivo.name[:-4] == nome:
-                arquivo = open(f'{self.__pathdb}/{nome}.txt', 'r',encoding='utf-8')
+            if arquivo.name[:-4] == name:
+                arquivo = open(f'{self.__pathdb}/{name}.txt', 'r',encoding='utf-8')
                 player = arquivo.readline()
                 arquivo.close()
 
                 itens_player = player.split(',')
-                self.__nome = itens_player[0]
+                self.__name = itens_player[0]
                 self.__palavras_acertadas = int(itens_player[1])
                 self.__letras_acertadas = int(itens_player[2])
                 self.__exp = int(itens_player[3])
                 self.__level = int(itens_player[4])
                 self.__patente = itens_player[5]
-        self.__nome = nome
+        self.__name = name
 
     def savePlayer(self):
         self.calculaExp()
         self.calculaLevel()
         self.calculaPatente()
-        with open(f'{self.__pathdb}/{self.__nome}.txt', 'w',encoding='utf-8') as f:
-            f.writelines(str(f'{self.__nome},{self.__palavras_acertadas},{self.__letras_acertadas},{self.__exp},{self.__level},{self.__patente}'))
+        with open(f'{self.__pathdb}/{self.__name}.txt', 'w',encoding='utf-8') as f:
+            f.writelines(str(f'{self.__name},{self.__palavras_acertadas},{self.__letras_acertadas},{self.__exp},{self.__level},{self.__patente}'))
             f.close()
