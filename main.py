@@ -3,6 +3,7 @@ from src.player import Player
 from pathlib import Path
 import time
 
+
 while True:
     try:
         options_menu = ('SOLO','VS','LIST OF PLAYERS','SAIR')
@@ -42,7 +43,7 @@ while True:
                     print('MODO', options_menu[0])
                     print(f'Player: {player_solo.name} Palavras: {player_solo.palavras_acertadas} Letras: {player_solo.letras_acertadas} Exp: {player_solo.exp} Lv {player_solo.level} {player_solo.patenteIcon()} {player_solo.patente}')
                     forca_solo.desenhaforca(forca_solo.formaPalavra(),forca_solo.getErros)
-                    print(f'Palavras já usadas: {forca_solo.getLetrasUsadas}')
+                    print(f'Letras já usadas: {forca_solo.getLetrasUsadas}')
                     chute= input("Chute: ")
                     if len(chute)> 1:
                         print("digite apenas uma letra.")

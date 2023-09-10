@@ -1,1 +1,1 @@
-Adriel,11,90,235,2,Duck
+Adriel,19,146,387,3,Duck
